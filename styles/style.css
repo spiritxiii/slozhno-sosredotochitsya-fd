@@ -1,8 +1,9 @@
 .page {
   background: no-repeat var(--cover-img);
+  background-color: var(--main-bg-color);
   background-attachment: fixed;
   background-position: center;
-  background-size: 100% 100%;
+  background-size: cover;
   color: var(--main-font-color);
   font-family: var(--main-font-family);
   font-weight: var(--main-font-weight);
@@ -20,10 +21,11 @@
   grid-template-columns: 1fr;
   align-content: space-between;
   position: relative;
-  block-size: 100dvb;
+  block-size: 100vh;
+  min-block-size: 668px;
 }
 
-.header__rec {
+.rec__text {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -31,13 +33,10 @@
   inset-block-start: var(--padding-indent-page);
   inset-inline-end: calc(var(--padding-indent-page) + 9px);
   line-height: 25px;
-}
-
-.rec__text {
   color: var(--accent-color);
 }
 
-.header__rec::after {
+.rec__text::after {
   content: '';
   border-radius: 50%;
   inline-size: 9px;
@@ -88,10 +87,13 @@
   align-items: center;
   min-inline-size: 70px;
   min-block-size: 26px;
+  border: 1px solid transparent;
+  transition: 0.5s;
 }
 
 .header__theme-menu-item:has(.header__theme-menu-button_active) {
   border: 1px solid var(--main-elemet-color);
+  pointer-events: none;
 }
 
 .header__theme-menu-item:hover {
@@ -108,10 +110,6 @@
   text-transform: lowercase;
   color: var(--main-elemet-color);
   background-color: transparent;
-}
-
-.header__theme-menu-button_active {
-  pointer-events: none;
 }
 
 .focus-text {
@@ -147,27 +145,27 @@
   margin-block-end: var(--section-margin-bottom);
 }
 
-.h2 {
+.section-title {
   font-size: inherit;
   font-weight: bold;
   color: var(--main-elemet-color);
 }
 
-.h2:has(+ .gallery__list) {
+.section-title:has(+ .gallery__list) {
   margin-block-end: var(--gallery-indent);
 }
 
-.h3 {
+.section-subtitle {
   font-size: inherit;
   font-weight: bold;
   margin-block-end: 10px;
 }
 
-.h3:has(+ h4) {
-  margin-block-end: 20px; /* Увеличиваем отступ, если следующий элемент — h4 */
+.section-subtitle:has(+ .section-how-concentrate__list) {
+  margin-block-end: 20px; /* Увеличиваем отступ, если следующий элемент — .section-how-concentrate__list */
 }
 
-.h4 {
+.text-title {
   font-weight: normal;
   margin-block-end: 10px;
 }
@@ -177,13 +175,16 @@
   color: var(--decor-text-color);
 }
 
-.section-text:not(:last-child) {
+.list:not(.grid) .article:not(:last-child),
+.section-how-concentrate__item:not(:last-child) {
   margin-block-end: 20px;
 }
 
 .text-link {
   text-shadow: 2px 1px 0 var(--accent-color);
   text-decoration: none;
+  border-block-end: 1px solid transparent;
+  transition: 0.5s;
 }
 
 .header__theme-menu-button:focus,
@@ -199,7 +200,7 @@
   outline: 1px solid var(--main-font-color);
 }
 
-.gallery {
+.section-gallery {
   margin-block-end: var(--bottom-indent);
 }
 
@@ -217,6 +218,11 @@
 
 @media (width >= 768px) {
 
+  .header,
+  .footer {
+    min-block-size: 1024px;
+  }
+
   .focus-text {
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
@@ -230,15 +236,20 @@
     inline-size: calc(100% / 2);
   }
 
-  .grid__two-columns {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .grid__two-rows {
+  .section-reasons {
     grid-template-rows: min-content min-content;
   }
 
-  .h2:has(+ .gallery__list) {
+  .section-reasons .section-title {
+    max-inline-size: calc((100% - 20px) / 3);
+  }
+
+  .section-why,
+  .section-how-concentrate {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .section-title:has(+ .gallery__list) {
     margin-block-end: 20px;
   }
 
@@ -246,17 +257,24 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .horizontal-two-cells {
+  .gallery__list .gallery__item:nth-child(1),
+  .gallery__list .gallery__item:nth-child(5) {
     grid-column-start: span 2;
   }
 
-  .vertical-two-cells {
+  .gallery__list .gallery__item:nth-child(2),
+  .gallery__list .gallery__item:nth-child(3) {
     grid-row-start: span 2;
   }
 }
 
 @media (width >= 1024px) {
   
+  .header,
+  .footer {
+    min-block-size: 768px;
+  }
+
   .header::before,
   .header__theme-menu {
     grid-row-start: 1;
@@ -271,7 +289,12 @@
     flex-direction: row;
   }
 
-  .grid__three-columns {
+  .section-why,
+  .section-how-concentrate {
+    grid-template-columns: 1fr 2.06fr;
+  }
+
+  .section-reasons .list:nth-child(2) {
     grid-template-columns: repeat(3, 1fr);
   }
 }

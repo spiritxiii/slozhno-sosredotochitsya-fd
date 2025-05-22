@@ -6,9 +6,10 @@
   --cover-img: url(../images/cover-image-light.png);
   --main-font-color: #353430;
   --main-elemet-color: #353430;
+  --main-bg-color: #fff1f7;
 }
 
-.theme-light .header__rec {
+.theme-light .rec__text {
   display: none;
 }
 
@@ -22,9 +23,10 @@
     --cover-img: url(../images/cover-image-light.png);
     --main-font-color: #353430;
     --main-elemet-color: #353430;
+    --main-bg-color: #fff1f7;
   }
 
-  .header__rec {
+  .rec__text {
     display: none;
   }
 }

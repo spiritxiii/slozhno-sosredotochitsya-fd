@@ -6,8 +6,9 @@
   --cover-img: url(../images/cover-image-dark.png);
   --main-font-color: #f1b2ce;
   --main-elemet-color: #ff0070;
+  --main-bg-color: #000028;
 }
 
-.theme-dark .header__rec {
+.theme-dark .rec__text {
   display: flex;
 }
