@@ -1,5 +1,271 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background: no-repeat var(--cover-img);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100% 100%;
+  color: var(--main-font-color);
+  font-family: var(--main-font-family);
+  font-weight: var(--main-font-weight);
+  font-size: var(--main-font-size);
+  line-height: var(--main-line-height);
+}
+
+.header {
+  margin-block-end: var(--bottom-indent);
+}
+
+.header, .footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: space-between;
+  position: relative;
+  block-size: 100dvb;
+}
+
+.header__rec {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  inset-block-start: var(--padding-indent-page);
+  inset-inline-end: calc(var(--padding-indent-page) + 9px);
+  line-height: 25px;
+}
+
+.rec__text {
+  color: var(--accent-color);
+}
+
+.header__rec::after {
+  content: '';
+  border-radius: 50%;
+  inline-size: 9px;
+  block-size: 9px;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 4px 2px var(--accent-color); 
+}
+
+.decorated-zone {
+  padding-inline: var(--padding-indent-page);
+  padding-block: var(--padding-indent-page);
+}
+
+.decorated-zone::before, .decorated-zone::after {
+  content: '';
+  display: block;
+  block-size: 25px;
+  inline-size: 25px;
+}
+
+.decorated-zone::before {
+  border-inline-end: 1px solid var(--main-elemet-color);
+  border-block-start: 1px solid var(--main-elemet-color);
+  justify-self: self-end;
+}
+
+.decorated-zone::after {
+  border-inline-start: 1px solid var(--main-elemet-color);
+  border-block-end: 1px solid var(--main-elemet-color);
+}
+
+.header__theme-menu {
+  margin-block-start: var(--header-menu-mbs);
+  margin-block-end: var(--header-menu-mbe);
+  justify-self: self-end;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header__theme-menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-inline-size: 70px;
+  min-block-size: 26px;
+}
+
+.header__theme-menu-item:has(.header__theme-menu-button_active) {
+  border: 1px solid var(--main-elemet-color);
+}
+
+.header__theme-menu-item:hover {
+  border: 1px solid var(--hover-border-color);
+}
+
+.header__theme-menu-item:has(:focus-visible) {
+  box-shadow: 0 1px 0 var(--main-elemet-color);
+}
+
+.header__theme-menu-button {
+  line-height: 18px;
+  border: none;
+  text-transform: lowercase;
+  color: var(--main-elemet-color);
+  background-color: transparent;
+}
+
+.header__theme-menu-button:focus, .text-link:focus {
+  outline: none;
+}
+
+.header__theme-menu-button_active {
+  pointer-events: none;
+}
+
+.focus-text {
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  text-shadow: 4px 4px 0 var(--accent-color);
+  color: var(--accent-color-focus);
+  line-height: 82.5%;
+  font-weight: bold;
+}
+
+.header .focus-text {
+  margin-block-end: var(--header-focus-text-mbe);
+}
+
+.footer .focus-text {
+  text-align: center;
+}
+
+.header__preview-text {
+  display: block;
+  font-size: inherit;
+  font-weight: bold;
+  margin-block-end: var(--header-preview-text-mbe);
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.section {
+  padding-inline: var(--padding-indent-page);
+  margin-block-end: var(--section-margin-bottom);
+}
+
+.h2 {
+  font-size: inherit;
+  font-weight: bold;
+  color: var(--main-elemet-color);
+}
+
+.h2:has(+ .gallery__list) {
+  margin-block-end: var(--gallery-indent);
+}
+
+.h3 {
+  font-size: inherit;
+  font-weight: bold;
+  margin-block-end: 10px;
+}
+
+.h3:has(+ h4) {
+  margin-block-end: 20px; /* Увеличиваем отступ, если следующий элемент — h4 */
+}
+
+.h4 {
+  font-weight: normal;
+  margin-block-end: 10px;
+}
+
+.title-decor {
+  background-color: var(--accent-color);
+  color: var(--decor-text-color);
+}
+
+.section-text:not(:last-child) {
+  margin-block-end: 20px;
+}
+
+.text-link {
+  text-shadow: 2px 1px 0 var(--accent-color);
+  text-decoration: none;
+}
+
+.text-link:hover {
+  border-block-end: 1px solid var(--main-font-color);
+}
+
+.text-link:focus-visible {
+  outline: 1px solid var(--main-font-color);
+}
+
+.gallery {
+  margin-block-end: var(--bottom-indent);
+}
+
+.gallery__list {
+  display: grid;
+  gap: var(--gallery-indent);
+}
+
+.gallery__picture {
+  display: block;
+  object-fit: cover;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+@media (width >= 768px) {
+  .focus-text {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header .focus-text {
+    margin-inline-start: -20px;
+  }
+
+  .header__preview-text {
+    margin-inline-start: auto;
+    inline-size: calc(100% / 2);
+  }
+  
+  .grid__two-columns {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .grid__two-rows {
+    grid-template-rows: min-content min-content;
+  }
+
+  .h2:has(+ .gallery__list) {
+    margin-block-end: 20px;
+  }
+
+  .gallery__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .horizontal-two-cells {
+    grid-column-start: span 2;
+  }
+
+  .vertical-two-cells {
+    grid-row-start: span 2;
+  }
+}
+
+@media (width >= 1024px) {
+  .header::before, .header__theme-menu {
+    grid-row-start: 1;
+    grid-column-start: 1;
+  }
+
+  .header__theme-menu {
+    justify-self: center;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+
+  .grid__three-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
