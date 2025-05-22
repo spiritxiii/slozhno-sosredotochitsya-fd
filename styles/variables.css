@@ -1,11 +1,11 @@
 :root {
-  --accent-color-focus: #DB00FF;
-  --accent-color: #FF0070;
+  --accent-color-focus: #db00ff;
+  --accent-color: #ff0070;
   --hover-border-color: rgb(255 0 112 / 0.4);
   --decor-text-color: #000028;
   --cover-img: url(../images/cover-image-dark.png);
-  --main-font-color: #F1B2CE;
-  --main-elemet-color: #FF0070;
+  --main-font-color: #f1b2ce;
+  --main-elemet-color: #ff0070;
   --main-font-family: 'IBM Plex mono', sans-serif;
   --main-font-weight: normal;
   --main-font-size: 18px;
@@ -20,7 +20,8 @@
   --header-preview-text-mbe: 31px;
 }
 
-@media(width >= 768px) {
+@media (width >= 768px) {
+
   :root {
     --padding-indent-page: 20px;
     --bottom-indent: 60px;
@@ -29,7 +30,8 @@
   }
 }
 
-@media(width >= 1024px) {
+@media (width >= 1024px) {
+  
   :root {
     --header-menu-mbs: 0;
     --header-menu-mbe: 273px;

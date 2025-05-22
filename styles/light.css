@@ -1,6 +1,6 @@
 :root.theme-light {
-  --accent-color-focus: #FFC2E6;
-  --accent-color: #FF8DCB;
+  --accent-color-focus: #ffc2e6;
+  --accent-color: #ff8dcb;
   --hover-border-color: rgb(50 49 45 / 0.4);
   --decor-text-color: #353430;
   --cover-img: url(../images/cover-image-light.png);
@@ -13,14 +13,15 @@
 }
 
 @media (prefers-color-scheme: light) {
+  
   :root {
-    --accent-color-focus: #FFC2E6;
-    --accent-color: #FF8DCB;
+    --accent-color-focus: #ffc2e6;
+    --accent-color: #ff8dcb;
     --hover-border-color: rgb(50 49 45 / 0.4);
     --decor-text-color: #353430;
     --cover-img: url(../images/cover-image-light.png);
     --main-font-color: #353430;
-    --main-elemet-color: #353430;    
+    --main-elemet-color: #353430;
   }
 
   .header__rec {
