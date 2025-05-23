@@ -14,7 +14,7 @@
 }
 
 @media (prefers-color-scheme: light) {
-  
+
   :root {
     --accent-color-focus: #ffc2e6;
     --accent-color: #ff8dcb;

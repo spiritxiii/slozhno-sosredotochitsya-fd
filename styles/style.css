@@ -75,16 +75,20 @@
   justify-self: self-end;
 }
 
-.header__theme-menu-list {
-  display: flex;
+.list {
+  display: flex; /* заменяем нижние отступы у списков на flex + gap для решения проблемы с переполнением */
   flex-direction: column;
+  gap: 20px; /* если необходимо, gap заменяется в другом селекторе */
+}
+
+.header__theme-menu-list {
   gap: 10px;
 }
 
 .header__theme-menu-item {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   min-inline-size: 70px;
   min-block-size: 26px;
   border: 1px solid transparent;
@@ -158,16 +162,10 @@
 .section-subtitle {
   font-size: inherit;
   font-weight: bold;
-  margin-block-end: 10px;
-}
-
-.section-subtitle:has(+ .section-how-concentrate__list) {
-  margin-block-end: 20px; /* Увеличиваем отступ, если следующий элемент — .section-how-concentrate__list */
 }
 
 .text-title {
   font-weight: normal;
-  margin-block-end: 10px;
 }
 
 .title-decor {
@@ -175,9 +173,8 @@
   color: var(--decor-text-color);
 }
 
-.list:not(.grid) .article:not(:last-child),
-.section-how-concentrate__item:not(:last-child) {
-  margin-block-end: 20px;
+.article-item {
+  gap: 10px;
 }
 
 .text-link {
@@ -294,7 +291,7 @@
     grid-template-columns: 1fr 2.06fr;
   }
 
-  .section-reasons .list:nth-child(2) {
+  .section-reasons .grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
